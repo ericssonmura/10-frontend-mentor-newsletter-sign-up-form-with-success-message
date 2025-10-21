@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frontend Mentor | Newsletter sign-up form with success message</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="main.css">
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+
+  <div class="newsletter-component__container">
+
+    <aside class="success-message__container fade" aria-live="polite">
+      <img src="assets/images/icon-success.svg" width="64" height="64" alt="">
+      <h1>Thanks for subscribing!</h1>
+      <p>A confirmation email has been sent to <br><strong>userEmail</strong>. Please open it and click the button inside
+        to confirm your subscription.</p>
+      <button type="submit" class="submit-btn">Dismiss message</button>
+    </aside>
+
+    <main class="newsletter-wrapper fade">
+
+      <article class="newsletter-component__content">
+        <h1>Stay updated!</h1>
+        <p>Join 60,000+ product managers receiving monthly updates on:</p>
+        <ul>
+          <li>Product discovery and building what matters</li>
+          <li>Measuring to ensure updates are a success</li>
+          <li>And much more!</li>
+        </ul>
+        <form id="newsletterForm">
+          <div class="formGroup">
+            <div class="label-wrapper">
+              <label for="email">Email address</label>
+              <span aria-live="polite" id="name-error"></span>
+            </div>
+            <input aria-describedby="name-error"
+              type="email" 
+              id="email" 
+              name="email" 
+              placeholder="email@company.com"
+              autocomplete="off"
+              required
+              pattern=""
+            >
+            <button type="submit" class="submit-btn">Subscribe to monthly newsletter</button>
+          </div> 
+        </form>
+      </article>
+
+      <header class="newsletter-component__header">
+        <picture>
+          <source media="(min-width: 1024px)" srcset="assets/images/illustration-sign-up-desktop.svg">
+          <source media="(min-width: 768px)" srcset="assets/images/illustration-sign-up-tablet.svg">
+          <img src="assets/images/illustration-sign-up-mobile.svg" alt="Illustration newsletter sign-up">
+        </picture>
+      </header>
+    </main>
+  </div>
+
+</body>
+</html>
