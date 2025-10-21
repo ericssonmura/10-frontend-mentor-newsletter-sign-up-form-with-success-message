@@ -25,15 +25,24 @@
 
   --line-height-100: 150%;
 
-  --spacing-100: 0.5rem; /* 8px */
-  --spacing-200: 1rem; /* 16px */
-  --spacing-300: 1.5rem; /* 24px */
-  --spacing-400: 2rem; /* 32px */
-  --spacing-500: 2.5rem; /* 40px */
-  --spacing-600: 3rem; /* 48px */
-  --spacing-800: 4rem; /* 64px */
-  --spacing-900: 4.5rem; /* 72px */
-  --spacing-1300: 6.5rem; /* 104px */
+  --spacing-100: 0.5rem;
+  /* 8px */
+  --spacing-200: 1rem;
+  /* 16px */
+  --spacing-300: 1.5rem;
+  /* 24px */
+  --spacing-400: 2rem;
+  /* 32px */
+  --spacing-500: 2.5rem;
+  /* 40px */
+  --spacing-600: 3rem;
+  /* 48px */
+  --spacing-800: 4rem;
+  /* 64px */
+  --spacing-900: 4.5rem;
+  /* 72px */
+  --spacing-1300: 6.5rem;
+  /* 104px */
 }
 
 html {
@@ -45,7 +54,9 @@ html {
   scroll-behavior: smooth;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -62,7 +73,9 @@ body {
   text-rendering: geometricPrecision;
 }
 
-a, a:visited, a:hover {
+a,
+a:visited,
+a:hover {
   text-decoration: none;
 }
 
@@ -74,12 +87,22 @@ img {
   background-repeat: no-repeat;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin: 0;
 }
 
 .success-message__container {
-  position: absolute;
+  position: fixed;
+  /* Stays relative to viewport, avoids overlap */
+  inset: 0;
+  /* shorthand for top:0; right:0; bottom:0; left:0; */
+  /* position: absolute; */
   display: none;
   flex-direction: column;
   block-size: 100dvh;
@@ -105,42 +128,6 @@ h1, h2, h3, h4, h5, h6, p {
 
 .success-message__container .submit-btn {
   margin-block-start: auto;
-} 
-
-.submit-btn {
-  position: relative;
-  inline-size: 100%;
-  padding: var(--spacing-200) var(--spacing-300);
-  border: none;
-  border-radius: 8px;
-  font: inherit;
-  font-size: 1rem;
-  color: var(--white);
-  background-color: var(--blue-800);
-  cursor: pointer;
-  overflow: hidden;
-  transition: box-shadow 0.1s ease, transform 0.1s ease;
-  isolation: isolate;
-}
-
-.submit-btn::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, var(--gradient-1-red), var(--gradient-2-purple));
-  opacity: 0;
-  transition: opacity 0.1s ease-in-out;
-  z-index: -1;
-}
-
-.submit-btn:hover::after,
-.submit-btn:focus-visible::after {
-  opacity: 1;
-}
-
-.submit-btn:hover,
-.submit-btn:focus-visible {
-  box-shadow: 0 10px 20px hsla(4, 100%, 67%, 0.1);
 }
 
 .newsletter-component__container {
@@ -211,13 +198,6 @@ form {
   flex-direction: column;
 }
 
-.label-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-}
-
 label {
   font-size: 0.75rem;
   font-weight: 700;
@@ -226,13 +206,15 @@ label {
 
 .label-wrapper {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  position: relative;
 }
 
 .label-wrapper #name-error {
   display: inline-block;
-  min-block-size: 1rem; /* min-height: 1rem; */
+  min-block-size: 1rem;
+  /* min-height: 1rem; */
   line-height: 1;
   font-size: 0.75rem;
   color: var(--red);
@@ -282,6 +264,7 @@ input.error::placeholder {
   position: relative;
   display: inline-block;
   inline-size: 100%;
+  padding: var(--spacing-200) var(--spacing-300);
   padding-block: var(--spacing-200);
   padding-inline: var(--spacing-300);
   border: none;
@@ -295,7 +278,21 @@ input.error::placeholder {
   cursor: pointer;
   transition: background 0.3s ease-in-out, transform 0.1s ease-in-out;
   overflow: hidden;
-  isolation: isolate; 
+  isolation: isolate;
+}
+
+.submit-btn:hover,
+.submit-btn:focus-visible {
+  box-shadow: 0 10px 20px hsla(4, 100%, 67%, 0.1);
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+.submit-btn:focus-visible {
+  outline: 2px solid var(--gradient-1-red);
+  outline-offset: 3px;
 }
 
 .submit-btn::after {
@@ -308,15 +305,6 @@ input.error::placeholder {
   z-index: -1;
 }
 
-.submit-btn:active {
-  transform: scale(0.98);
-}
-
-.submit-btn:focus-visible {
-  outline: 2px solid var(--gradient-1-red);
-  outline-offset: 3px;
-}
-
 .submit-btn:hover::after,
 .submit-btn:focus-visible::after {
   opacity: 1;
@@ -326,7 +314,7 @@ input.error::placeholder {
   position: relative;
   z-index: 1;
 }
- 
+
 form:has(input:focus) .submit-btn {
   background: linear-gradient(to right, var(--gradient-1-red), var(--gradient-2-purple));
   box-shadow: 0 10px 20px hsla(4, 100%, 67%, 0.3);
@@ -370,7 +358,9 @@ form:has(input:focus) .submit-btn {
 @media screen and (min-width: 28.125em) {
   .success-message__container {
     display: none;
-    position: absolute;
+    /* position: absolute; */
+    position: fixed; /* Stays relative to viewport, avoids overlap */
+    inset: 0; /* shorthand for top:0; right:0; bottom:0; left:0; */
     padding: 3rem;
     inline-size: 26.25rem;
     block-size: 26.25rem;
@@ -387,23 +377,25 @@ form:has(input:focus) .submit-btn {
     font-size: 2.25rem;
     font-size: var(--spacing-500);
   }
-    
+
   .success-message__container .submit-btn {
     margin-block-start: auto;
-  } 
+  }
 }
 
 @media screen and (min-width: 48em) {
   .success-message__container {
     display: none;
-    position: absolute;
+    position: fixed; /* Stays relative to viewport, avoids overlap
+    /* inset: 0; shorthand for top:0; right:0; bottom:0; left:0; */
+    top: -4.5rem;
     padding: 4rem;
-    margin-block-start: -4.5rem;
+    /* margin-block-start: -4.5rem; */
     inline-size: 31.5rem;
     block-size: 31.5rem;
     transform: translate(-50%, -50%);
     transition: opacity 0.3s ease, transform 0.3s ease;
-    top: 50%; 
+    top: 50%;
     left: 50%;
     overflow: hidden;
   }
@@ -439,13 +431,13 @@ form:has(input:focus) .submit-btn {
   form {
     margin-block-start: var(--spacing-300);
   }
-  
+
   input {
     margin-block-end: var(--spacing-200);
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 64em) {
   .success-message__container {
     margin-block-start: 0;
   }
@@ -471,12 +463,12 @@ form:has(input:focus) .submit-btn {
     padding-block-start: 4.5rem;
     flex: 1;
   }
-  
+
   .newsletter-component__content h1 {
     margin-block-start: 0;
   }
 
-   form {
+  form {
     margin-block-start: var(--spacing-400);
   }
 
