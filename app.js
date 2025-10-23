@@ -29,6 +29,7 @@ function validateForm(formSelector) {
    */
   function validateSingleFormGroup(formGroup) {
     const label = formGroup.querySelector('label');
+    const span = formGroup.querySelector('#name-error');
     const input = formGroup.querySelector('input');
     const errorContainer = formGroup.querySelector('.label-wrapper #name-error');
 
@@ -40,6 +41,7 @@ function validateForm(formSelector) {
         // Display corresponding error message
         errorContainer.textContent = option.errorMessage(input, label);
         input.classList.add('error');
+        span.classList.add('error');
         formGroupError = true;
         break; // Stop after the first detected error
       }
@@ -49,6 +51,7 @@ function validateForm(formSelector) {
     if (!formGroupError) {
       errorContainer.textContent = '';
       input.classList.remove('error');
+      span.classList.remove('error');
     }
 
     return !formGroupError;

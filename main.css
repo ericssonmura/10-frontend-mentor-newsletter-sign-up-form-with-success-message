@@ -214,7 +214,6 @@ label {
 .label-wrapper #name-error {
   display: inline-block;
   min-block-size: 1rem;
-  /* min-height: 1rem; */
   line-height: 1;
   font-size: 0.75rem;
   color: var(--red);
@@ -225,6 +224,10 @@ label {
 
 .label-wrapper #name-error:not(:empty) {
   opacity: 1;
+}
+
+span.error {
+  animation: shake 0.2s ease-in-out;
 }
 
 input {
@@ -238,6 +241,14 @@ input {
   font: inherit;
   color: var(--blue-800);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-warning {
+    border: 1px solid hsl(4, 61%, 69%);
+    color: hsl(4, 61%, 69%);
+    font-weight: 500;
+    background-color: hsl(5, 100%, 95%);
+    animation: validate 0.2s ease-in-out;
 }
 
 input[placeholder] {
@@ -254,6 +265,7 @@ input:focus {
 input.error {
   border: 1.5px solid var(--red);
   background-color: hsl(6, 100%, 96%);
+  animation: shake 0.2s ease-in-out;
 }
 
 input.error::placeholder {
@@ -352,6 +364,11 @@ form:has(input:focus) .submit-btn {
   opacity: 0;
   pointer-events: none;
 }
+
+.error {
+    animation: shake 0.2s ease-in-out;
+}
+
 
 
 /* RESPONSIVE */
@@ -476,3 +493,45 @@ form:has(input:focus) .submit-btn {
     margin-block-end: var(--spacing-300);
   }
 }
+
+
+/* ANIMATIONS */
+@keyframes shake {
+  0%,
+  100% {
+      transform: translateX(0);
+      color: red;
+  }
+
+  25% {
+      transform: translateX(5px);
+      color: hsl(234, 29%, 20%);
+  }
+
+  50% {
+      transform: translateX(-5px);
+      color: hsl(342, 100%, 50%);
+  }
+
+  75% {
+      transform: translateX(5px);
+      color: hsl(234, 29%, 20%);
+  }
+}
+
+@keyframes validate {
+  0%,
+  100% {
+      border: 1px solid hsl(234, 29%, 20%);
+      color: hsl(234, 29%, 20%);
+      transform: translateY(0);
+      background-color: hsl(5, 100%, 95%);
+  }
+
+  50% {
+      border: 1px solid hsl(4, 61%, 69%);
+      color: hsl(4, 61%, 69%);
+      transform: translateY(1px);
+  }
+}
+
